@@ -1,6 +1,11 @@
 <?php
 
-$months = ["January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"]
+$months = ["January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"];
+$friend = array(
+    "Name" => "Irving",
+    "Last Name" => "Juárez",
+    "Country" => "México"
+);
 
 ?>
 
@@ -13,8 +18,7 @@ $months = ["January", "February", "March", "April", "June", "July", "August", "S
     <title>For Each</title>
 </head>
 <body>
-    <h2>A forEach loop rendering all the months of the year</h2>
-    <p><i>IMPORTANT</i>: this loop is recommended to use only in arrays</p>
+    <h2>Months of the year</h2>
     <ul>
         <?php
 
@@ -22,6 +26,15 @@ $months = ["January", "February", "March", "April", "June", "July", "August", "S
             echo "<li>".$month."</li>";
         }
 
+        ?>
+    </ul>
+
+    <h2>Values of an item</h2>
+    <ul>
+        <?php
+            foreach($friend as $item => $value){
+                echo "<li>".$item.": ".$value."</li>";
+            }
         ?>
     </ul>
 </body>
