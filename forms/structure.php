@@ -7,7 +7,7 @@
     <title>Forms</title>
 </head>
 <body>
-    <form action="catch.php" method="post">
+    <form action="get.php" method="get">
         <input type="text" placeholder="Name" name="name">
         <br>
         <input type="radio" name="gender" id="male" value="male">
