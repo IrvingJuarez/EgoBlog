@@ -7,16 +7,16 @@
     <title>Forms</title>
 </head>
 <body>
-    <form action="catch.php">
+    <form action="catch.php" method="post">
         <input type="text" placeholder="Name" name="name">
         <br>
-        <input type="radio" name="genre" id="male" value="male">
+        <input type="radio" name="gender" id="male" value="male">
         <label for="male">Male</label>
         <br>
-        <input type="radio" name="genre" id="female" value="female">
+        <input type="radio" name="gender" id="female" value="female">
         <label for="female">Female</label>
         <br>
-        <input type="radio" name="genre" id="non-binary" value="non-binary">
+        <input type="radio" name="gender" id="non-binary" value="non-binary">
         <label for="non-binary">Non-binary</label>
         <br>
         <select name="country" id="">
