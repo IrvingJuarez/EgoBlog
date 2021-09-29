@@ -18,6 +18,14 @@
         <label for="message">Message</label>
         <textarea name="message" id="message" cols="30" rows="10"></textarea>
 
+        <!-- <div class="alert error">
+            Error
+        </div>
+
+        <div class="alert success">
+            Success
+        </div> -->
+
         <input type="submit" value="Send message" name="submit" class="btn-submit">
     </form>
 </body>
