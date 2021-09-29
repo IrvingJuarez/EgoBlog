@@ -10,13 +10,13 @@
 <body>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value="<?php echo (isset($nameDraft) && empty($success)) ? $nameDraft : ""; ?>">
 
         <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" value="<?php echo (isset($emailDraft) && empty($success)) ? $emailDraft : ""; ?>">
 
         <label for="message">Message</label>
-        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <textarea name="message" id="message" cols="30" rows="10"><?php echo (isset($messageDraft) && empty($success)) ? $messageDraft : ""; ?></textarea>
 
         <?php if(!empty($errors)): ?>
             <div class="alert error">

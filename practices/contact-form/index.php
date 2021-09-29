@@ -11,6 +11,7 @@ function gettingReady($var, $status){
     }
     $var = trim($var);
     $var = htmlspecialchars($var);
+    $var = stripslashes($var);
     return $var;
 }
 
@@ -22,6 +23,7 @@ if(isset($_POST['submit'])){
     if(empty($name)){
         $errors .= "Please add a name <br>";
     }else {
+        $nameDraft = $name;
         $name = gettingReady($name, "string");
     }
 
@@ -30,12 +32,14 @@ if(isset($_POST['submit'])){
     }else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $errors .= "Please insert a valid email address <br>";
     }else{
+        $emailDraft = $email;
         $email = gettingReady($email, "email");
     }
 
     if(empty($message)){
         $errors .= "Please add a message <br>";
     }else{
+        $messageDraft = $message;
         $message = gettingReady($message, "string");
     }
 
