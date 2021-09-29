@@ -18,13 +18,15 @@
         <label for="message">Message</label>
         <textarea name="message" id="message" cols="30" rows="10"></textarea>
 
-        <!-- <div class="alert error">
-            Error
-        </div>
-
-        <div class="alert success">
-            Success
-        </div> -->
+        <?php if(!empty($errors)): ?>
+            <div class="alert error">
+                <?php echo $errors; ?>
+            </div>
+        <?php elseif(!empty($success)): ?>
+            <div class="alert success">
+                <?php echo $success; ?>
+            </div>
+        <?php endif; ?>
 
         <input type="submit" value="Send message" name="submit" class="btn-submit">
     </form>
