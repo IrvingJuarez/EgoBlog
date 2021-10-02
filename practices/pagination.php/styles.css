@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    min-height: 100vh;
+    padding-top: 60px;
+    font-size: 3rem;
+
+    background-color: #f4f4f4;
+    font-family: sans-serif;
+}
+main h2{
+    font-weight: 500;
+    padding: 15px;
+    color: orange;
+}
+main section ul{
+    list-style: none;
+}
+main .articles ul li{
+    padding: 14px 0;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #b0b0b0;
+}
+
+.pagination ul{
+    display: flex;
+}
+.pagination ul li{
+    padding: 9px 12px;
+    margin: 0 10px;
+
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px black;
+}
+.pagination ul li a{
+    text-decoration: none;
+}
+.disabled{
+    opacity: 0.5;
+}
+.disabled a{
+    cursor: not-allowed;
+}
+.active{
+    background-color: orange;
+}
+.active a{
+    color: white;
+}
