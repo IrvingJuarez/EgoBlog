@@ -21,6 +21,23 @@ function emptiness($variable, $msg){
     }
 }
 
+function dbConnect($username, $password){
+    $connection = new mysqli('localhost', 'root', '', 'logination', 8080);
+
+    if($connection->connect_errno == 0){
+        $sql = "INSERT INTO users (name, password) VALUES(?, ?)";
+        $statement = $connection->prepare($sql);
+        $statement->bind_param("ss", $username, $password);
+        $statement->execute();
+
+        if($connection->affected_rows >= 1){
+            return "<span class='success'>The data was sent successfully</span>";
+        }
+    }else{
+        return "<span class='fail'>There was a problem with our db. Try later.</span>";
+    }
+}
+
 if(isset($_POST['submit'])){
     $username = clean($_POST['name']);
     $password = $_POST['password'];

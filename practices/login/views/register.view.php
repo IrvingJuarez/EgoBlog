@@ -33,7 +33,7 @@
                             if( !empty($pwc) ){
                                 echo "<span class='fail'>The passwords are wrong, check them out.</span>";
                             }else{
-                                echo "<span class='success'>The data was sent sucessfully</span>";
+                                echo dbConnect($username, $password);
                             }
                         }
                     }
