@@ -58,3 +58,12 @@ span{
     font-size: 2.3rem;
     padding: 9px;
 }
+.main_form article{
+    margin: 10px 0;
+    text-align: center;
+    font-size: 2.4rem;
+}
+.main_form article a{
+    text-decoration: none;
+    color: orange;
+}

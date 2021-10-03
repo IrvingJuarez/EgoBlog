@@ -1,11 +1,9 @@
 <?php
 
-function emptiness($variable, $msg){
-    if(empty($variable)){
-        return "<span>Please add a $msg</span>";
-    }else{
-        return null;
-    }
-}
+session_start();
 
-require "index.view.php";
+if( isset($_SESSION['user']) ){
+    header("Location: home.php");
+}else{
+    header("Location: register.php");
+}

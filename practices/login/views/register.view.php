@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <main>
@@ -23,16 +23,21 @@
 
                 <?php
                     if(isset($_POST['submit'])){
-                        $name = $_POST['name'];
-                        $password = $_POST['password'];
+                        // $name = $_POST['name'];
+                        // $password = $_POST['password'];
 
-                        echo emptiness($name, "User name");
-                        echo emptiness($password, "Password");
+                        // echo emptiness($name, "User name");
+                        // echo emptiness($password, "Password");
                     }
                 ?>
 
-                <input type="submit" name="submit" value="Log in">
+                <input type="submit" name="submit" value="Sign in">
             </form>
+
+            <article>
+                <h3>Already registered?</h3>
+                <a href="login.php">Log in</a>
+            </article>
         </section>
     </main>
 </body>
