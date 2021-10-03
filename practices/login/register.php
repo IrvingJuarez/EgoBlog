@@ -25,14 +25,26 @@ function dbConnect($username, $password){
     $connection = new mysqli('localhost', 'root', '', 'logination', 8080);
 
     if($connection->connect_errno == 0){
-        $sql = "INSERT INTO users (name, password) VALUES(?, ?)";
-        $statement = $connection->prepare($sql);
-        $statement->bind_param("ss", $username, $password);
-        $statement->execute();
+        $sqlNameComp = "SELECT * FROM users WHERE name = ? LIMIT 1";
+        $statementComp = $connection->prepare($sqlNameComp);
+        $statementComp->bind_param("s", $username);
+        $statementComp->execute();
 
-        if($connection->affected_rows >= 1){
-            return "<span class='success'>The data was sent successfully</span>";
+        $result = $statementComp->fetch();
+
+        if($result){
+            echo "<span>That user name already exists. Try again.</span>";
+        }else{
+            $sql = "INSERT INTO users (name, password) VALUES(?, ?)";
+            $statement = $connection->prepare($sql);
+            $statement->bind_param("ss", $username, $password);
+            $statement->execute();
+    
+            if($connection->affected_rows >= 1){
+                return "<span class='success'>The data was sent successfully</span>";
+            }
         }
+
     }else{
         return "<span class='fail'>There was a problem with our db. Try later.</span>";
     }
