@@ -13,13 +13,13 @@
         <section class="main_form">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <label for="name">User name</label>
-                <input type="text" name="name" id="name" value="<?php echo $username ?? ""; ?>">
+                <input type="text" name="name" id="name" value="<?php echo ( isset($username) & !empty($errors) ) ? $username : ""; ?>">
 
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="<?php echo $password ?? ""; ?>">
+                <input type="password" name="password" id="password" value="<?php echo ( isset($password) & !empty($errors) ) ? $password : ""; ?>">
 
                 <label for="password2">Repeat the password</label>
-                <input type="password" name="password2" id="password2" value="<?php echo $password2 ?? ""; ?>">
+                <input type="password" name="password2" id="password2" value="<?php echo ( isset($password2) & !empty($errors) ) ? $password2 : ""; ?>">
 
                 <?php
                     if(isset($_POST['submit'])){
@@ -30,7 +30,7 @@
                         if($errors){
                             echo $errors;
                         }else{
-                            echo "<span>The data was sent sucessfully</span>";
+                            echo "<span class='success'>The data was sent sucessfully</span>";
                         }
                     }
                 ?>
