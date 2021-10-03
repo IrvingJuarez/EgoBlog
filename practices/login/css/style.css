@@ -70,3 +70,6 @@ span{
 .success{
     background-color: #ef9b00;
 }
+.fail{
+    background-color: red;
+}

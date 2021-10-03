@@ -25,6 +25,13 @@ if(isset($_POST['submit'])){
     $username = clean($_POST['name']);
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
+    $pwc = "Not empty";
+
+    if( !empty($password) && !empty($password2) ){
+        if($password == $password2){
+            $pwc = "";
+        }
+    }
 
     // echo "$username, $password, $password2";
 }
