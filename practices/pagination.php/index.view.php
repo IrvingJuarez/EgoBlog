@@ -13,8 +13,12 @@
         <section class="articles">
             <ul>
                 <?php
-                    while($row = $result->fetch_assoc()){
-                        echo "<li>".$row['id'].".- ".$row['title'].".</li>";
+                    if($rowNum >= 1){
+                        while($row = $result->fetch_assoc()){
+                            echo "<li>".$row['id'].".- ".$row['title'].".</li>";
+                        }
+                    }else{
+                        ech0 "<li>There is any article published yet.</li>";
                     }
                 ?>
             </ul>
@@ -23,13 +27,17 @@
         <section class="pagination">
             <ul>
                 <?php
-                    $a = $_GET['page'] ?? 1;
-                    for($i = 1; $i <= ceil($rowNum / $limit); $i++){
-                        if($i == $a){
-                            echo renderLi($i, true);
-                        }else{
-                            echo renderLi($i, false);
+                    if($rowNum >= 1){
+                        $a = $_GET['page'] ?? 1;
+                        for($i = 1; $i <= ceil($rowNum / $limit); $i++){
+                            if($i == $a){
+                                echo renderLi($i, true);
+                            }else{
+                                echo renderLi($i, false);
+                            }
                         }
+                    }else{
+                        echo renderLi(0, false);
                     }
                 ?>
             </ul>
