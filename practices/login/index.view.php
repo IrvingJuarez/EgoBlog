@@ -11,7 +11,7 @@
     <main>
         <h2>Registrate</h2>
         <section class="main_form">
-            <form>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <label for="name">User name</label>
                 <input type="text" name="name" id="name">
 
@@ -20,6 +20,16 @@
 
                 <label for="password2">Repeat the password</label>
                 <input type="password" name="password2" id="password2">
+
+                <?php
+                    if(isset($_POST['submit'])){
+                        $name = $_POST['name'];
+                        $password = $_POST['password'];
+
+                        echo emptiness($name, "User name");
+                        echo emptiness($password, "Password");
+                    }
+                ?>
 
                 <input type="submit" name="submit" value="Log in">
             </form>
