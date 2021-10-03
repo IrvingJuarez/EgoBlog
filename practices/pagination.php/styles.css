@@ -27,6 +27,10 @@ main h2{
 main section ul{
     list-style: none;
 }
+.articles{
+    width: 700px;
+    min-height: 500px;
+}
 main .articles ul li{
     padding: 14px 0;
     margin-bottom: 22px;

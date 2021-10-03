@@ -12,22 +12,26 @@
         <h2>Articles</h2>
         <section class="articles">
             <ul>
-                <li>1.- Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                <li>2.- Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                <li>3.- Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                <li>4.- Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                <li>5.- Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                <?php
+                    while($row = $result->fetch_assoc()){
+                        echo "<li>".$row['id'].".- ".$row['title'].".</li>";
+                    }
+                ?>
             </ul>
         </section>
 
         <section class="pagination">
             <ul>
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">&raquo;</a></li>
+                <?php
+                    $a = $_GET['page'] ?? 1;
+                    for($i = 1; $i <= ceil($rowNum / $limit); $i++){
+                        if($i == $a){
+                            echo renderLi($i, true);
+                        }else{
+                            echo renderLi($i, false);
+                        }
+                    }
+                ?>
             </ul>
         </section>
     </main>

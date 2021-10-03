@@ -1,45 +1,33 @@
 <?php
 
-require("index.view.php");
+function renderLi($id, $flag){
+    $url = "http://localhost/LiberMeus/practices/pagination.php/?page=$id";
+
+    if($flag){
+        return "<li class='active'><a href='".$url."'>".$id."</a></li>";
+    }else{
+        return "<li><a href='".$url."'>".$id."</a></li>";
+    }
+}
 
 $connection = new mysqli('localhost', 'root', '', 'pagination', 8080);
-$titles = array(
-    "Lorem ipsum dolor sit amet.",
-    "consectetur adipisicing elit.",
-    "Eligendi possimus, modi similique",
-    "Recusandae praesentium pariatur ab",
-    "A quia obcaecati sequi deleniti",
-    "Voluptates dolor facilis expedita",
-    "Laudantium, sint quos",
-    "Nobis, explicabo?",
-    "Nemo odio earum eaque",
-    "Sint quis facere repudiandae",
-    "Cumque rerum possimus",
-    "Magnam aliquid adipisci commodi",
-    "Impedit assumenda qui",
-    "Odit quisquam ea et",
-    "Lorem ipsum, dolor",
-    "Sit amet consectetur",
-    "Adipisicing elit",
-    "Nostrum numquam dolor",
-    "Enim iste veniam",
-    "Aliquam at corrupti"
-);
 
 if($connection->connect_errno == 0){
-    $sql = "INSERT INTO articles (title) VALUES(?)";
+    $page = $_GET['page'] ?? 1;
+    $sql = "SELECT * FROM articles LIMIT ?, ?";
     
-    foreach($titles as $title){
-        $statement = $connection->prepare($sql);
-        $statement->bind_param("s", $the_title);
+    $request = $connection->prepare($sql);
+    $request->bind_param("ii", $beginning, $limit);
+    $limit = 5;
+    $beginning = ($page > 1) ? ($page * $limit - $limit) : 0;
+    $request->execute();
 
-        $the_title = $title;
-        $statement->execute();
-    }
-    
-    if($connection->affected_rows >= 1){
-        echo "The insertion was successfully <br>";
-    }
+    $result = $request->get_result();
+
+    $rowRequest = $connection->query("SELECT id FROM articles");
+    $rowNum = $rowRequest->num_rows;
 }else{
     echo "Sorry, there was an error with the server";
 }
+
+require("index.view.php");
