@@ -27,10 +27,11 @@ header{
 .view-container{
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 200px;
     height: 200px;
     padding: 9px;
+
+    text-align: center;
     box-shadow: 1px 1px 6px black;
 }
 h2{
