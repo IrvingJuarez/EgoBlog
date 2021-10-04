@@ -13,7 +13,8 @@
             <h2>View counter</h2>
         </header>
         <section class="view-container">
-            <h2>This webpage had been seen <i>0</i> times</h2>
+            <?php counter(); ?>
+            <!-- <h2>This webpage had been seen <i>0</i> times</h2> -->
         </section>
     </main>
 </body>
