@@ -11,21 +11,24 @@
     <main>
         <h2>Registrate</h2>
         <section class="main_form">
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                 <label for="name">User name</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" value="<?php echo $_POST['name'] ?? ""; ?>">
 
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" value="<?php echo $_POST['password'] ?? ""; ?>">
 
                 <?php
-                    // if(isset($_POST['submit'])){
-                    //     $name = $_POST['name'];
-                    //     $password = $_POST['password'];
+                    if( isset($_POST['submit']) ){
+                        emptiness($name, "User name");
+                        emptiness($password, "Password");
 
-                    //     echo emptiness($name, "User name");
-                    //     echo emptiness($password, "Password");
-                    // }
+                        if($errors){
+                            echo $errors;
+                        }else{
+                            dbConnect($name, $password);
+                        }
+                    }
                 ?>
 
                 <input type="submit" name="submit" value="Log in">
