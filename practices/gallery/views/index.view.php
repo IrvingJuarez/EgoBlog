@@ -15,14 +15,27 @@
     </header>
     <main>
         <section class="main-content">
-            <article></article>
-            <article></article>
-            <article></article>
-            <article></article>
-            <article></article>
-            <article></article>
-            <article></article>
-            <article></article>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
+            <a href="photo.php">
+                <article></article>
+            </a>
         </section>
     </main>
     <footer>
