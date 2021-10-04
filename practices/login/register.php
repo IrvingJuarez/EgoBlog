@@ -52,8 +52,8 @@ function dbConnect($username, $password){
 
 if(isset($_POST['submit'])){
     $username = clean($_POST['name']);
-    $password = $_POST['password'];
-    $password2 = $_POST['password2'];
+    $password = hash("crc32b", $_POST['password']);
+    $password2 = hash("crc32b", $_POST['password2']);
     $pwc = "Not empty";
 
     if( !empty($password) && !empty($password2) ){
