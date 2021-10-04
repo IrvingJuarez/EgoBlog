@@ -2,12 +2,15 @@
 
 $value = 0;
 
+function prepareStm($connection, $theSql){
+    $statement = $connection->prepare($theSql);
+    $statement->execute();
+    return $statement;
+}
+
 function come($connection){
     global $value;
-    $sql = "SELECT counter FROM views";
-    $statement = $connection->prepare($sql);
-    $statement->execute();
-
+    $statement = prepareStm($connection, "SELECT counter FROM views");
     $result = $statement->get_result();
     $value = $result->fetch_assoc()['counter'];
 }
@@ -15,9 +18,7 @@ function come($connection){
 function go($connection){
     global $value;
     $value += 1;
-    $sql = "UPDATE views SET counter = $value";
-    $statement = $connection->prepare($sql);
-    $statement->execute();
+    $statement = prepareStm($connection, "UPDATE views SET counter = $value");
 }
 
 function counter(){
