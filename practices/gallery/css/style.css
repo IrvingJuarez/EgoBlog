@@ -18,6 +18,9 @@ body{
     font-size: 2rem;
 }
 header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: fit-content;
     padding: 30px;
@@ -25,6 +28,20 @@ header{
     font-size: 3rem;
     font-weight: 400;
     box-shadow: 1px 1px 6px grey;
+}
+header a{
+    text-decoration: none;
+}
+header a:nth-child(1){
+    color: black;
+}
+header a:nth-child(2){
+    padding: 9px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 300;
 }
 main{
     width: fit-content;
@@ -66,4 +83,23 @@ footer{
 .photo-content > article{
     width: 50%;
     padding: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    height: 450px;
+}
+form > *{
+    margin: 5px 0;
+}
+form input, textarea{
+    min-width: 100%;
+    max-width: 100%;
+    padding: 6px;
+    font-size: 1.7rem;
+}
+textarea{
+    height: 150px;
 }

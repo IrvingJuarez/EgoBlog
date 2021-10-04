@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        Photo Gallery
+        <a href="index.php">Photo Gallery</a>
+
+        <a href="upload.php">Upload photo</a>
     </header>
     <main>
         <section class="main-content">
