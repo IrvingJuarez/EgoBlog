@@ -13,15 +13,28 @@
     </header>
     <main>
         <section class="upload-content">
-            <form action="<?php echo htmlspecialchars( $_SERVER["PHP_SELF"] ); ?>" method="POST">
+            <form action="<?php echo htmlspecialchars( $_SERVER["PHP_SELF"] ); ?>" method="POST" enctype="multipart/form-data">
                 <label for="photo">Choose your photo</label>
                 <input type="file" name="photo" id="photo">
 
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" placeholder="Add a title">
+                <input type="text" name="title" id="title" placeholder="Add a title" value="<?php echo $title ?? ""; ?>">
 
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Add a description"></textarea>
+                <textarea name="description" id="description" placeholder="Add a description"><?php echo $text ?? ""; ?></textarea>
+
+                <?php
+                    if( isset($_POST["upload"]) ){
+                        emptiness($title, "Title");
+                        emptiness($text, "Description");
+
+                        if($errors){
+                            echo $errors;
+                        }else{
+                            photoComprobation();
+                        }
+                    }
+                ?>
 
                 <input type="submit" name="upload" value="Upload photo">
             </form>

@@ -102,4 +102,10 @@ form input, textarea{
 }
 textarea{
     height: 150px;
+    font-family: system-ui;
+}
+
+.err{
+    color: red;
+    font-size: 1.7rem;
 }
