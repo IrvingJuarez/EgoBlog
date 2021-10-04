@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if(isset($_SESSION['user'])){
+    header("Location: home.php");
+}
+
 $errors = "";
 
 function emptiness($variable, $msg){
@@ -28,6 +34,7 @@ function dbConnect($name, $pw){
         $result = $statement->fetch();
 
         if($result){
+            $_SESSION['user'] = $name;
             header("Location: home.php");
         }else{
             echo "<span>The user or the password are wrong, try again or log-in.</span>";
