@@ -41,12 +41,12 @@ function dbConnect($username, $password){
             $statement->execute();
     
             if($connection->affected_rows >= 1){
-                return "<span class='success'>The data was sent successfully</span>";
+                header("Location: login.php");
             }
         }
 
     }else{
-        return "<span class='fail'>There was a problem with our db. Try later.</span>";
+        echo "<span class='fail'>There was a problem with our db. Try later.</span>";
     }
 }
 

@@ -28,7 +28,7 @@ function dbConnect($name, $pw){
         $result = $statement->fetch();
 
         if($result){
-            header("Location: content.php");
+            header("Location: home.php");
         }else{
             echo "<span>The user or the password are wrong, try again or log-in.</span>";
         }
