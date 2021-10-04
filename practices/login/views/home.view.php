@@ -10,6 +10,7 @@
 <body>
     <main>
         <h2>Home</h2>
+        <a href="logout.php">Log out</a>
     </main>
 </body>
 </html>
