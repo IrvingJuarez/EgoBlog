@@ -17,14 +17,38 @@ function clean($str){
     return $str;
 }
 
+function addToDB($connection, $path){
+    $sql = "INSERT INTO pics (path, title, description) VALUES(?, ?, ?)";
+    $statement = $connection->prepare($sql);
+    $statement->bind_param("sss", $path, $_POST["title"], $_POST["description"]);
+    $statement->execute();
+
+    if($connection->affected_rows >= 1){
+        move_uploaded_file( $_FILES["photo"]["tmp_name"], $path );
+        header("Location: index.php");
+    }else{
+        echo "<span class='err'>There was an error with the db. Try later.</span>";
+    }
+}
+
 function uploadPhoto(){
     $dir = "imgs/";
     $path = $dir.$_FILES["photo"]["name"];
 
     $connection = dbConnection();
     if($connection->errno == 0){
-        echo "<span class='succ'>The connection with the database was successful</span>";
-        // move_uploaded_file($_FILES["photo"]["tmp_name"], $path);
+        $sql = "SELECT path FROM pics WHERE path = ? LIMIT 1";
+        $statement = $connection->prepare($sql);
+        $statement->bind_param("s", $path);
+        $statement->execute();
+
+        $result = $statement->fetch();
+
+        if($result){
+            echo "<span class='err'>Sorry, a file with the same name already exists in our db</span>";
+        }else{
+            addToDB($connection, $path);
+        }
     }else{
         echo "<span class='err'>There was an error with the database. Try later.</span>";
     }
