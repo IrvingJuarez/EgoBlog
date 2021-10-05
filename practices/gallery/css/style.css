@@ -78,11 +78,20 @@ footer{
 
 .photo-content{
     display: flex;
-    height: 500px;
+    min-height: 500px;
 }
 .photo-content > article{
     width: 50%;
+    height: fit-content;
     padding: 20px;
+}
+.photo-content_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.photo-content_img img{
+    width: 90%;
 }
 form{
     display: flex;
