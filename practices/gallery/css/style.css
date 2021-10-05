@@ -116,3 +116,13 @@ textarea{
     background-color: green;
     color: white;
 }
+.return{
+    width: fit-content;
+    padding: 6px;
+    font-size: 1.7rem;
+    border-radius: 10px;
+    border: 1px solid black;
+
+    text-decoration: none;
+    color: black;
+}

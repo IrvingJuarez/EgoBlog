@@ -18,10 +18,10 @@
                 <input type="file" name="photo" id="photo">
 
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" placeholder="Add a title" value="<?php echo $title ?? ""; ?>">
+                <input type="text" name="title" id="title" placeholder="Add a title" value="<?php if( isset($title) ) printValue($title); ?>">
 
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Add a description"><?php echo $text ?? ""; ?></textarea>
+                <textarea name="description" id="description" placeholder="Add a description"><?php if( isset($text) ) printValue($text); ?></textarea>
 
                 <?php
                     if( isset($_POST["upload"]) ){
@@ -34,9 +34,13 @@
                             photoComprobation();
                         }
                     }
-                ?>
 
-                <input type="submit" name="upload" value="Upload photo">
+                    if($success){
+                        echo "<a class='return' href='index.php'>Return to index</a>";
+                    }else{
+                        echo "<input type='submit' name='upload' value='Upload photo'>";
+                    }
+                ?>
             </form>
         </section>
     </main>

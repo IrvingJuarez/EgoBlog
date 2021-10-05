@@ -3,6 +3,16 @@
 require "functions.php";
 
 $errors = "";
+$success = false;
+
+function printValue($value){
+    global $success;
+    if( isset($value) && $success == false ){
+        echo $value;
+    }else{
+        echo "";
+    }
+}
 
 function emptiness($variable, $msg){
     global $errors;
@@ -24,8 +34,10 @@ function addToDB($connection, $path){
     $statement->execute();
 
     if($connection->affected_rows >= 1){
+        global $success;
         move_uploaded_file( $_FILES["photo"]["tmp_name"], $path );
-        header("Location: index.php");
+        echo "<span class='succ'>The photo was uploaded correctly</span>";
+        $success = true;
     }else{
         echo "<span class='err'>There was an error with the db. Try later.</span>";
     }
