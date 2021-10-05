@@ -15,27 +15,13 @@
     </header>
     <main>
         <section class="main-content">
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
-            <a href="photo.php">
-                <article></article>
-            </a>
+            <?php
+                while($img = $result->fetch_assoc()){
+                    echo "<a href='photo.php'>";
+                        echo "<img src='".$img["path"]."'/>";
+                    echo "</a>";
+                }
+            ?>
         </section>
     </main>
     <footer>
