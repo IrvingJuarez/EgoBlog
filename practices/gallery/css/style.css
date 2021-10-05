@@ -109,3 +109,10 @@ textarea{
     color: red;
     font-size: 1.7rem;
 }
+.succ{
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    background-color: green;
+    color: white;
+}

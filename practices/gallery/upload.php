@@ -1,5 +1,7 @@
 <?php
 
+require "functions.php";
+
 $errors = "";
 
 function emptiness($variable, $msg){
@@ -18,14 +20,20 @@ function clean($str){
 function uploadPhoto(){
     $dir = "imgs/";
     $path = $dir.$_FILES["photo"]["name"];
-    move_uploaded_file($_FILES["photo"]["tmp_name"], $path);
+
+    $connection = dbConnection();
+    if($connection->errno == 0){
+        echo "<span class='succ'>The connection with the database was successful</span>";
+        // move_uploaded_file($_FILES["photo"]["tmp_name"], $path);
+    }else{
+        echo "<span class='err'>There was an error with the database. Try later.</span>";
+    }
 }
 
 function photoComprobation(){
     global $continue;
     if( $_FILES["photo"]["tmp_name"] ){
         uploadPhoto();
-        header("Location: index.php");
     }else{
         echo "<span class='err'>Please add a <i>photo</i> to upload</span>";
     }
