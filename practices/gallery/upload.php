@@ -5,15 +5,6 @@ require "functions.php";
 $errors = "";
 $success = false;
 
-function printValue($value){
-    global $success;
-    if( isset($value) && $success == false ){
-        echo $value;
-    }else{
-        echo "";
-    }
-}
-
 function emptiness($variable, $msg){
     global $errors;
     if( empty($variable) ){
@@ -72,6 +63,15 @@ function photoComprobation(){
         uploadPhoto();
     }else{
         echo "<span class='err'>Please add a <i>photo</i> to upload</span>";
+    }
+}
+
+function printValue($value){
+    global $success;
+    if( isset($value) && $success == false ){
+        echo $value;
+    }else{
+        echo "";
     }
 }
 

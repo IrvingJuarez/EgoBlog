@@ -15,16 +15,22 @@
     </header>
     <main>
         <section class="photo-content">
-            <article class="photo-content_img">
+            <?php
+                if( $errors ){
+                    echo $errors;
+                }else{
+                    echo "<article class='photo-content_img'>";
+                        echo "<img src='".$url."' title='".$title."'/>";
+                    echo "</article>";
 
-            </article>
-
-            <article class="photo-content_description">
-                <h2>Title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid fuga, et corrupti commodi deserunt nobis, eum nostrum repellat, eos distinctio temporibus facilis minima reiciendis. Ducimus recusandae pariatur provident adipisci!
-                </p>
-            </article>
+                    echo "<article class='photo-content_description'>";
+                        echo "<h2>".$title."</h2>";
+                        echo "<p>";
+                            echo $description;
+                        echo "</p>";
+                    echo "</article>";
+                }
+            ?>
         </section>
     </main>
     <footer>

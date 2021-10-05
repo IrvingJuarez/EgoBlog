@@ -17,7 +17,8 @@
         <section class="main-content">
             <?php
                 while($img = $result->fetch_assoc()){
-                    echo "<a href='photo.php'>";
+                    $file = pathinfo($img["path"], PATHINFO_BASENAME);
+                    echo "<a href='photo.php?img=$file'>";
                         echo "<img src='".$img["path"]."'/>";
                     echo "</a>";
                 }
