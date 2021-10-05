@@ -1,6 +1,7 @@
 <?php
 
 $errors = "";
+$continue = false;
 
 function emptiness($variable, $msg){
     global $errors;
@@ -16,8 +17,10 @@ function clean($str){
 }
 
 function photoComprobation(){
-    if( isset($_FILES["photo"]["tmp-name"]) ){
-        echo "<span>We can continue</span>";
+    global $continue;
+    if( $_FILES["photo"]["tmp_name"] ){
+        $continue = true;
+        echo "<span class='succ'>The photo was uploaded correctly</span>";
     }else{
         echo "<span class='err'>Please add a <i>photo</i> to upload</span>";
     }
