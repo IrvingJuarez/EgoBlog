@@ -18,10 +18,10 @@
                 <input type="file" name="photo" id="photo">
 
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" placeholder="Add a title" value="<?php echo ( isset($title) && $continue == false ) ? $title : ""; ?>">
+                <input type="text" name="title" id="title" placeholder="Add a title" value="<?php echo $title ?? ""; ?>">
 
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Add a description"><?php echo ( isset($text) && $continue == false ) ? $text : ""; ?></textarea>
+                <textarea name="description" id="description" placeholder="Add a description"><?php echo $text ?? ""; ?></textarea>
 
                 <?php
                     if( isset($_POST["upload"]) ){

@@ -1,7 +1,6 @@
 <?php
 
 $errors = "";
-$continue = false;
 
 function emptiness($variable, $msg){
     global $errors;
@@ -16,11 +15,17 @@ function clean($str){
     return $str;
 }
 
+function uploadPhoto(){
+    $dir = "imgs/";
+    $path = $dir.$_FILES["photo"]["name"];
+    move_uploaded_file($_FILES["photo"]["tmp_name"], $path);
+}
+
 function photoComprobation(){
     global $continue;
     if( $_FILES["photo"]["tmp_name"] ){
-        $continue = true;
-        echo "<span class='succ'>The photo was uploaded correctly</span>";
+        uploadPhoto();
+        header("Location: index.php");
     }else{
         echo "<span class='err'>Please add a <i>photo</i> to upload</span>";
     }
